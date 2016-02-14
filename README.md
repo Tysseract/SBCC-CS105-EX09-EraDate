@@ -1,6 +1,6 @@
 ## Exercise: EraDate (16 Points)
 
-The project name of this exercise is **WaterState** Problem Description
+The project name of this exercise is **EraDate** Problem Description
 
 The purpose of this assignment is to learn how to do comparisons using the if statement. Additionally, you get more practice on how to write all of your own code and Javadoc comments.
 
