@@ -84,7 +84,7 @@ public class EraDateTester {
 		assertEquals("Check your months to make sure you are subtracting 1 in the constructor.", "Enter a year: Enter a month: Enter a day: Meiji\n",
 				this.baos.toString());
 		
-		totalScore += 1;
+		totalScore += 2;
 	}
 
 	@Test
@@ -136,6 +136,6 @@ public class EraDateTester {
 		runTest(2014, 1, 1);
 		assertEquals("Check the month in the constructor", "Enter a year: Enter a month: Enter a day: Heisei\n", this.baos.toString());
 		
-		totalScore += 1;
+		totalScore += 2;
 	}
 }
