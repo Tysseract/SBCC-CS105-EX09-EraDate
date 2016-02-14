@@ -1,11 +1,14 @@
 package unittest.cs105;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -68,21 +71,24 @@ public class EraDateTester {
 		System.out.flush();
 	}
 
+	private void test(String msg, String expected) {
+		Pattern tester = Pattern.compile(expected);
+		Matcher testMatcher = tester.matcher(this.baos.toString());
+		assertTrue(msg, testMatcher.matches());	
+	}
 
 	@Test
 	public void testJapaneseMeijiEra() {
 		runTest(1868, 9, 8);
-		assertEquals("Era should be Meiji", "Enter a year: Enter a month: Enter a day: Meiji\n", this.baos.toString());
+		test("Era should be Meiji", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Meiji\\s*");
 		this.baos.reset();
 		
 		runTest(1912, 7, 30);
-		assertEquals("Check your months to make sure you are subtracting 1 in the constructor.", "Enter a year: Enter a month: Enter a day: Meiji\n",
-				this.baos.toString());
+		test("Check your months to make sure you are subtracting 1 in the constructor.", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Meiji\\s*");
 		this.baos.reset();
 		
 		runTest(1900, 1, 1);
-		assertEquals("Check your months to make sure you are subtracting 1 in the constructor.", "Enter a year: Enter a month: Enter a day: Meiji\n",
-				this.baos.toString());
+		test("Check your months to make sure you are subtracting 1 in the constructor.", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Meiji\\s*");
 		
 		totalScore += 2;
 	}
@@ -90,15 +96,15 @@ public class EraDateTester {
 	@Test
 	public void testJapaneseTaishoEra() {
 		runTest(1912, 8, 1);
-		assertEquals("Check the month in the constructor", "Enter a year: Enter a month: Enter a day: Taisho\n", this.baos.toString());
+		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Taisho\\s*");
 		this.baos.reset();
 		
 		runTest(1926, 12, 25);
-		assertEquals("Check the month in the constructor", "Enter a year: Enter a month: Enter a day: Taisho\n", this.baos.toString());
+		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Taisho\\s*");
 		this.baos.reset();
 		
 		runTest(1922, 1, 1);
-		assertEquals("Check the month in the constructor", "Enter a year: Enter a month: Enter a day: Taisho\n", this.baos.toString());
+		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Taisho\\s*");
 		
 		totalScore += 2;
 	}
@@ -106,15 +112,15 @@ public class EraDateTester {
 	@Test
 	public void testJapaneseShowaEra() {
 		runTest(1926, 12, 26);
-		assertEquals("Check the month in the constructor", "Enter a year: Enter a month: Enter a day: Showa\n", this.baos.toString());
+		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Showa\\s*");
 		this.baos.reset();
 		
 		runTest(1989, 1, 7);
-		assertEquals("Check the month in the constructor", "Enter a year: Enter a month: Enter a day: Showa\n", this.baos.toString());
+		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Showa\\s*");
 		this.baos.reset();
 		
 		runTest(1950, 1, 1);
-		assertEquals("Check the month in the constructor", "Enter a year: Enter a month: Enter a day: Showa\n", this.baos.toString());
+		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Showa\\s*");
 		
 		totalScore += 2;
 	}
@@ -130,11 +136,11 @@ public class EraDateTester {
 	@Test
 	public void testJapaneseHeiseiEra() {
 		runTest(1989, 1, 8);
-		assertEquals("Check the month in the constructor", "Enter a year: Enter a month: Enter a day: Heisei\n", this.baos.toString());
+		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Heisei\\s*");
 		this.baos.reset();
 		
 		runTest(2014, 1, 1);
-		assertEquals("Check the month in the constructor", "Enter a year: Enter a month: Enter a day: Heisei\n", this.baos.toString());
+		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Heisei\\s*");
 		
 		totalScore += 2;
 	}
