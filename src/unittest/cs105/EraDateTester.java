@@ -1,32 +1,17 @@
 package unittest.cs105;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import edu.sbcc.cs105.Main;
+import edu.sbcc.cs105.EraDate;
 
 public class EraDateTester {
 	private static final int maximumScore = 8;
 	private static final int maximumAssignmentScore = 16;
 	private static int totalScore;
-
-	private PrintStream oldOut;
-	private InputStream oldIn;
-	private ByteArrayOutputStream baos;
-	private ByteArrayInputStream bais;
 
 	@BeforeClass
 	public static void beforeTesting() {
@@ -46,81 +31,29 @@ public class EraDateTester {
 		System.out.println("criteria.");
 	}
 
-	@Before
-	public void setUp() {
-		this.baos = new ByteArrayOutputStream();
-		this.oldOut = System.out;
-		this.oldIn  = System.in;
-		System.setOut(new PrintStream(baos));
-
-	}
-
-	@After
-	public void tearDown() {
-		System.setOut(this.oldOut);
-		System.setIn(this.oldIn);
-		
-		this.baos.reset();
-	}
-	
-	private void runTest(int year, int month, int day) {
-		this.bais = new ByteArrayInputStream((year + "\n" + month + "\n" + day + "\n").getBytes());
-		System.setIn(this.bais);	
-		
-		Main.main(null);
-		System.out.flush();
-	}
-
-	private void test(String msg, String expected) {
-		Pattern tester = Pattern.compile(expected);
-		Matcher testMatcher = tester.matcher(this.baos.toString());
-		assertTrue(msg, testMatcher.matches());	
-	}
-
 	@Test
 	public void testJapaneseMeijiEra() {
-		runTest(1868, 9, 8);
-		test("Era should be Meiji", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Meiji\\s*");
-		this.baos.reset();
-		
-		runTest(1912, 7, 30);
-		test("Check your months to make sure you are subtracting 1 in the constructor.", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Meiji\\s*");
-		this.baos.reset();
-		
-		runTest(1900, 1, 1);
-		test("Check your months to make sure you are subtracting 1 in the constructor.", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Meiji\\s*");
+		assertEquals("Era should be Meiji", "Meiji", EraDate.getEra(8, 9, 1868));
+		assertEquals("Check your months to make sure you are subtracting 1 in the constructor.", "Meiji", EraDate.getEra(30, 7, 1912));		
+		assertEquals("Check your months to make sure you are subtracting 1 in the constructor.", "Meiji", EraDate.getEra(1, 1, 1900));
 		
 		totalScore += 2;
 	}
 
 	@Test
 	public void testJapaneseTaishoEra() {
-		runTest(1912, 8, 1);
-		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Taisho\\s*");
-		this.baos.reset();
-		
-		runTest(1926, 12, 25);
-		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Taisho\\s*");
-		this.baos.reset();
-		
-		runTest(1922, 1, 1);
-		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Taisho\\s*");
+		assertEquals("Check the month in the constructor", "Taisho", EraDate.getEra( 1,  8, 1912));
+		assertEquals("Check the month in the constructor", "Taisho", EraDate.getEra(25, 12, 1926));
+		assertEquals("Check the month in the constructor", "Taisho", EraDate.getEra( 1,  1, 1922));
 		
 		totalScore += 2;
 	}
 
 	@Test
 	public void testJapaneseShowaEra() {
-		runTest(1926, 12, 26);
-		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Showa\\s*");
-		this.baos.reset();
-		
-		runTest(1989, 1, 7);
-		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Showa\\s*");
-		this.baos.reset();
-		
-		runTest(1950, 1, 1);
-		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Showa\\s*");
+		assertEquals("Check the month in the constructor", "Showa", EraDate.getEra(26, 12, 1926));
+		assertEquals("Check the month in the constructor", "Showa", EraDate.getEra( 7,  1, 1989));
+		assertEquals("Check the month in the constructor", "Showa", EraDate.getEra( 1,  1, 1950));
 		
 		totalScore += 2;
 	}
@@ -135,12 +68,8 @@ public class EraDateTester {
 	 */
 	@Test
 	public void testJapaneseHeiseiEra() {
-		runTest(1989, 1, 8);
-		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Heisei\\s*");
-		this.baos.reset();
-		
-		runTest(2014, 1, 1);
-		test("Check the month in the constructor", "Enter a year:\\s*Enter a month:\\s*Enter a day:\\s*Heisei\\s*");
+		assertEquals("Check the month in the constructor", "Heisei", EraDate.getEra(8, 1, 1989));
+		assertEquals("Check the month in the constructor", "Heisei", EraDate.getEra(1, 1, 2014));
 		
 		totalScore += 2;
 	}
