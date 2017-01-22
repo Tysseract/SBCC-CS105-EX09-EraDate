@@ -10,12 +10,12 @@ In Japan, years are referred to using the Gregorian Calendar like we do here and
 
 The table below shows the last four Eras and when they started and ended*.
 
- Era Name | Start      | End
-----------|:----------:|:----------:
- Meiji	  | 1/25/1868  | 7/30/1912
- Taisho   | 8/1/1912   | 12/25/1926
- Showa	  | 12/26/1926 | 1/7/1989
- Heisei   | 1/8/1989   | present
+Era Name | Start      | End
+:--------|:----------:|:----------:
+Meiji    | 1/25/1868  | 7/30/1912
+Taisho   | 8/1/1912   | 12/25/1926
+Showa    | 12/26/1926 | 1/7/1989
+Heisei   | 1/8/1989   | present
 
 You are to write a program that will take a date and then print out the Japanese Era name (using something like a println)'
 
