@@ -10,12 +10,12 @@ In Japan, years are referred to using the Gregorian Calendar like we do here and
 
 The table below shows the last four Eras and when they started and ended*.
 
-| Era Name | Start      | End        |
-|----------|:----------:|:----------:|
-| Meiji	   | 1/25/1868  | 7/30/1912  |
-| Taisho   | 8/1/1912   | 12/25/1926 |
-| Showa	   | 12/26/1926 | 1/7/1989   |
-| Heisei   | 1/8/1989   | present    |
+ Era Name | Start      | End
+----------|:----------:|:----------:
+ Meiji	  | 1/25/1868  | 7/30/1912
+ Taisho   | 8/1/1912   | 12/25/1926
+ Showa	  | 12/26/1926 | 1/7/1989
+ Heisei   | 1/8/1989   | present
 
 You are to write a program that will take a date and then print out the Japanese Era name (using something like a println)'
 
@@ -23,7 +23,7 @@ Your **EraDate.java** should contain code to implement your EraDate solution. Sp
 
 Hints:
 
-- You might want to use the GregorianCalendar object to hold your date representation.
+- You might want to use the `GregorianCalendar` object to hold your date representation.
 - The GregorianCalendar object uses months from 0 to 11 rather than from 1 to 12 so adjust accordingly.
 - The GregorianCalendar object defines the fields: Calendar.YEAR, Calendar.MONTH, and Calendar.DAY_OF_MONTH to be used with the get method.
 - The GregorianCalendar object also has a getTimeInMillis method that returns the number of millisecond of the object. This simplifies comparisons.
@@ -53,6 +53,32 @@ To start the process write click your project and select **Team -> Commit...** a
 
 #### Completing the turn-in process
 
-Now to complete the turn-in process, once you confirmed that your code is on BitBucket, you need to create a **build plan** on Bamboo. This action will create a Bamboo build plan that will build and test your code every time you push code to your project. You can also run builds manually
+Go to **your** repository or the repository for this assignment on BitBucket (the project you forked from to create your project).
 
-Follow the directions in [How to Turn in Every Project in This Class](http://crowd.cs.sbcc.edu:7990/projects/CS105F2016/repos/allan.knight/browse/HowToTurnInEveryProjectInThisClass.md)
+<img src="https://dl.dropboxusercontent.com/u/7698973/cs105/EX01-HelloWorld/create-pull-request.png" width="207" height="207" />
+
+1\. Click on the **Create pull request** icon. 
+
+You should see something similar to this picture:
+
+<img src="https://dl.dropboxusercontent.com/u/7698973/cs105/EX01-HelloWorld/pull-request-screen-first.png" width="600" height="250" />
+
+The next screen then shows the source and destination of the pull request. Your code is the source and is listed at the top. The destination is the original project that you forked from. The only thing to do on this screen is to select the **master** branch for your project. Once you select **Select Branch**, as directed below, you should see the following:
+
+<img src="https://dl.dropboxusercontent.com/u/7698973/cs105/EX01-HelloWorld/pull-request-master.png" width="600" height="250" />
+
+2\. Select **Select Branch**
+
+3\. Select **master** 
+
+4\. Press the **Continue** button.
+
+Once you've followed these steps you should see this at the top:
+
+<img src="https://dl.dropboxusercontent.com/u/7698973/cs105/EX01-HelloWorld/pull-request-description.png" width="514" height="325" />
+
+5\. Under **Title**.
+
+6\. Under **Description**.
+
+7\. Finally, click on **Create**
