@@ -24,7 +24,7 @@ public class EraDate {
 		//define each era start time
 		GregorianCalendar Heisei = new GregorianCalendar(1989, 0, 8); //actually January 8 (0, 8)
 		GregorianCalendar Showa = new GregorianCalendar(1926, 11, 25); //actually Dec 25 (11, 25)
-		GregorianCalendar Taisho = new GregorianCalendar(1912, 7, 30); //actually July 30 (7, 30)
+		GregorianCalendar Taisho = new GregorianCalendar(1912, 6, 30); //actually July 30 (7, 30)
 		GregorianCalendar Meiji = new GregorianCalendar(1868, 9, 23); //actually October 23 (9, 23)
 		GregorianCalendar EdoPeriod = new GregorianCalendar(1603, 2, 24); 
 		GregorianCalendar AzuchiMomoyamaPeriod = new GregorianCalendar(1573, 0, 1); //approximate

@@ -33,8 +33,8 @@ public class EraDateTester {
 
 	@Test
 	public void testJapaneseMeijiEra() {
-		assertEquals("Era should be Meiji", "Meiji", EraDate.getEra(8, 9, 1868));
-		assertEquals("Check your months to make sure you are subtracting 1 in the constructor.", "Meiji", EraDate.getEra(30, 7, 1912));		
+		assertEquals("Era should be Meiji", "Meiji", EraDate.getEra(23, 10, 1868));
+		assertEquals("Check your months to make sure you are subtracting 1 in the constructor.", "Meiji", EraDate.getEra(29, 7, 1912));		
 		assertEquals("Check your months to make sure you are subtracting 1 in the constructor.", "Meiji", EraDate.getEra(1, 1, 1900));
 		
 		totalScore += 2;
@@ -43,7 +43,7 @@ public class EraDateTester {
 	@Test
 	public void testJapaneseTaishoEra() {
 		assertEquals("Check the month in the constructor", "Taisho", EraDate.getEra( 1,  8, 1912));
-		assertEquals("Check the month in the constructor", "Taisho", EraDate.getEra(25, 12, 1926));
+		assertEquals("Check the month in the constructor", "Taisho", EraDate.getEra(24, 12, 1926));
 		assertEquals("Check the month in the constructor", "Taisho", EraDate.getEra( 1,  1, 1922));
 		
 		totalScore += 2;
